@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
 
     private Rigidbody2D player;
+    private Animator animator;
     private SpriteRenderer spriteRenderer;
 
     bool isFacingRight;
@@ -17,14 +18,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        isFacingRight = false;
+        isFacingRight = true;
         player = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         var horizontal = Input.GetAxis("Horizontal");
+        int animState = 0;
 
         player.velocity = new Vector2(horizontal * movementSpeed, player.velocity.y);
 
@@ -33,16 +36,23 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
-        if (horizontal > 0)
+        if (horizontal != 0)
         {
-            isFacingRight = false;
-        }
-        else if (horizontal < 0)
-        {
-            isFacingRight = true;
+            animState = 2;
+
+            if (horizontal > 0)
+            {
+                isFacingRight = true;
+            }
+            else if (horizontal < 0)
+            {
+                isFacingRight = false;
+            }
         }
 
         spriteRenderer.flipX = isFacingRight;
+        animator.SetInteger("AnimState", animState);
+        animator.SetBool("Grounded", isOnGround);
     }
 
     void Jump()
