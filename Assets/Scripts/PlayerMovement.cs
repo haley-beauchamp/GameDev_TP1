@@ -50,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (player.velocity.y < -1) //if the player is falling (< -1 because 0 was producing animation issues)
+        {
+            isOnGround = false;
+        }
+
         spriteRenderer.flipX = isFacingRight;
         animator.SetInteger("AnimState", animState);
         animator.SetBool("Grounded", isOnGround);
