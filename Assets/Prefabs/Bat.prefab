@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -5721218948272627336}
   - component: {fileID: 58903046724918981}
   - component: {fileID: 8279822542600069368}
+  - component: {fileID: 2879119201509554111}
   - component: {fileID: -4403918992769671072}
   - component: {fileID: 1945716093422732446}
   - component: {fileID: 5536781693251437034}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7013631516640934163, guid: b438465a32eb63243a7889eb1f400d29, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5254902}
+  m_Color: {r: 1, g: 0.9764151, b: 0.9764151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,7 +116,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847ffe272cd81459a8d510d5e9841a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 4
+  enemyDamage: 1
+--- !u!114 &2879119201509554111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734925267290774574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e4927589d21bb4faf8a7bedb852a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eHealth: 1
 --- !u!95 &-4403918992769671072
 Animator:
   serializedVersion: 5

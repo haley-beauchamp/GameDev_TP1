@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - test
+  - spikes
   - Wall
+  - enemy
   layers:
   - Default
   - TransparentFX

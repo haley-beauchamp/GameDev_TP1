@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 
@@ -8,57 +9,51 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
     [SerializeField] float jumpForce;
+    [SerializeField] GameObject interactionAvailable;
 
     private Rigidbody2D player;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
 
     bool isFacingRight;
-    bool isOnGround;
+    public static bool isOnGround;
+    public static bool playerDead = false;
+    private float horizontal;
 
     void Start()
     {
         isFacingRight = true;
         player = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        var horizontal = Input.GetAxis("Horizontal");
-        int animState = 0;
-
-        player.velocity = new Vector2(horizontal * movementSpeed, player.velocity.y);
-
-        if (Input.GetKey(KeyCode.Space) && isOnGround) //only let the player jump when on the ground
+        if (!playerDead)
         {
-            Jump();
-        }
+            horizontal = Input.GetAxis("Horizontal");
+            int animState = 0;
 
-        if (horizontal != 0)
-        {
-            animState = 2;
+            player.velocity = new Vector2(horizontal * movementSpeed, player.velocity.y);
 
-            if (horizontal > 0)
+            if (Input.GetKey(KeyCode.Space) && isOnGround)
             {
-                isFacingRight = true;
+                Jump();
             }
-            else if (horizontal < 0)
+
+            if (horizontal != 0)
             {
-                isFacingRight = false;
+                animState = 2; //running animation
+
+                if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+                {
+                    Flip();
+                }
             }
+            animator.SetInteger("AnimState", animState);
+            animator.SetBool("Grounded", isOnGround);
         }
-
-        if (player.velocity.y < -1) //if the player is falling (< -1 because 0 was producing animation issues)
-        {
-            isOnGround = false;
-        }
-
-        spriteRenderer.flipX = isFacingRight;
-        animator.SetInteger("AnimState", animState);
-        animator.SetBool("Grounded", isOnGround);
     }
+
 
     void Jump()
     {
@@ -72,5 +67,21 @@ public class PlayerMovement : MonoBehaviour
         {
             isOnGround = true;
         }
+    }
+
+    public void notifyPlayer()
+    {
+        interactionAvailable.SetActive(true);
+    }
+
+    public void denotifyPlayer()
+    {
+        interactionAvailable.SetActive(false);
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
     }
 }

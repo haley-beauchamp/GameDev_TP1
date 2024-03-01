@@ -12,11 +12,13 @@ GameObject:
   - component: {fileID: 4025937171657853885}
   - component: {fileID: -3275477284479123105}
   - component: {fileID: 5125602561401612190}
+  - component: {fileID: -4133251206209867349}
+  - component: {fileID: 4049834938889083770}
   - component: {fileID: 1086768129185088418}
   - component: {fileID: 3214472790295527909}
   m_Layer: 0
   m_Name: Rat
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3286189400204805870, guid: bacb39275657a5c41b462455d80cd045, type: 3}
+  m_Sprite: {fileID: 260878052759509753, guid: 2327dee1e20363b41a2488a631a0a941, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,7 +116,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847ffe272cd81459a8d510d5e9841a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 4
+  enemyDamage: 1
+--- !u!114 &-4133251206209867349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718556372821469150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e4927589d21bb4faf8a7bedb852a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eHealth: 1
+--- !u!95 &4049834938889083770
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718556372821469150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2af98cfbf96ce841963b37ec392cf64, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &1086768129185088418
 Rigidbody2D:
   serializedVersion: 4
