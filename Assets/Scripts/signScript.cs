@@ -7,13 +7,24 @@ using UnityEngine.UI;
 public class signScript : MonoBehaviour
 {
     public bool isInRange;
-    [SerializeField] Text signText; 
+    [SerializeField] Text signText;
+    [SerializeField] string textForSign;
+    [SerializeField] Canvas canvas;
+    [SerializeField] bool shouldRemoveCanvas = false;
+
+    void Start()
+    {
+        if (shouldRemoveCanvas)
+        {
+            canvas.enabled = false;
+        }
+    }
 
     void Update()
     {
         if (isInRange)
         {
-            signText.text = "!Warning!\nDangerous Cave Ahead\nP.S. I Have Hidden The Key To The Cave Somewhere High Where Nobody Can Reach It";
+            signText.text = textForSign.Replace("\\n", "\n");
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +32,10 @@ public class signScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
+            if (shouldRemoveCanvas)
+            {
+                canvas.enabled = true;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -29,6 +44,11 @@ public class signScript : MonoBehaviour
         {
             isInRange = false;
             signText.text = "";
+
+            if (shouldRemoveCanvas)
+            {
+                canvas.enabled = false;
+            }
         }
     }
 }

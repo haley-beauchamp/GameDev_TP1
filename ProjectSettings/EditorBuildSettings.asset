@@ -9,14 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/mainMenu.unity
     guid: 2c6644b6073ac7f4492cc01dbf8a3e61
   - enabled: 1
-    path: Assets/Scenes/First_Level.unity
-    guid: 709e92f6dbb05463b9eb0c1403df2168
-  - enabled: 1
-    path: Assets/Scenes/Second_Level.unity
+    path: Assets/Scenes/Level_One.unity
     guid: d34c1f96e7abc6e478f345c89d34dd46
   - enabled: 1
-    path: Assets/Scenes/Caleb's Level.unity
+    path: Assets/Scenes/Level_Two.unity
+    guid: c7c81df51bc61475080f2735593a0c66
+  - enabled: 1
+    path: Assets/Scenes/Level_Three.unity
     guid: 9d0d5b15fb95b495ea2d7eec67570c22
+  - enabled: 1
+    path: Assets/Scenes/Level_Four.unity
+    guid: 709e92f6dbb05463b9eb0c1403df2168
+  - enabled: 1
+    path: Assets/Scenes/winScreen.unity
+    guid: 73044a10e86754ac5bec84600c89f6ca
   - enabled: 1
     path: Assets/Scenes/playerDead.unity
     guid: 2662d8b7928b54040991202ac515d999
